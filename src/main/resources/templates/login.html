@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}">
+<head>
+    <title>BlueFood - Autenticação</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <img th:src="@{images/bf-icone-usuario.png}" id="img-icone-usuario" />
+
+                <h1>Autenticação</h1>
+
+                <div class="d-flex flex-column align-items-center">
+                    <form method="post" style="width: 420px;" action="">
+                        <div class="form-groups">
+                            <label for="email" class="form-label">E-mail:</label>
+                            <input type="text" id="email" name="email" class="form-controls" placeholder="E-mail..." />
+                        </div>
+                        <div class="form-groups">
+                            <label for="senha" class="form-label">Senha:</label>
+                            <input type="password" id="senha" name="senha" class="form-controls" placeholder="Senha..." />
+                        </div>
+
+                        <div class="d-blocked-buttons" style="margin-top: 16px">
+                            <input type="button" value="Entrar" />
+                            <input type="button" value="Criar Conta de Usuário" />
+                            <input type="button" value="Criar Conta de Restaurante" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

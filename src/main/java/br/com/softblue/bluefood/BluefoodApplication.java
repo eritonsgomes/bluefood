@@ -1,4 +1,4 @@
-package br.com.softblue.bluefood.bluefood;
+package br.com.softblue.bluefood;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
