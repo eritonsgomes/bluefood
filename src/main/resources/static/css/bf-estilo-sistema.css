@@ -102,7 +102,7 @@ textarea {
   height: 100px;
 }
 
-input[type=text], input[type=password], select {
+input[type=text], input[type=tel], input[type=email], input[type=password], select {
     border: 2px solid #1e9bde;
     font-size: 16px;
     cursor: pointer;
