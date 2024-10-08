@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}">
+<head>
+    <title>BlueFood - Cadastro de Cliente</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <h1>Cadastro de Cliente</h1>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+            <form method="post" th:object="${cliente}" style="width: 420px;" th:action="@{/public/cliente}">
+                <div class="form-groups">
+                    <label for="nome" class="form-label">Nome: </label>
+                    <input type="text" th:field="*{nome}" id="nome" name="nome" class="form-controls"
+                           placeholder="Nome..." />
+                </div>
+
+                <div class="form-groups">
+                    <label for="cpf" class="form-label">CPF: </label>
+                    <input type="text" th:field="*{cpf}" id="cpf" name="cpf" class="form-controls"
+                           placeholder="CPF..." />
+                </div>
+
+                <div class="form-groups">
+                    <label for="email" class="form-label">E-mail: </label>
+                    <input type="email" th:field="*{email}" id="email" name="email" class="form-controls"
+                           placeholder="E-mail..." />
+                </div>
+
+                <div class="form-groups">
+                    <label for="telefone" class="form-label">Telefone: </label>
+                    <input type="tel" th:field="*{telefone}" id="telefone" name="telefone" class="form-controls"
+                           placeholder="Telefone..." />
+                </div>
+
+                <div class="form-groups">
+                    <label for="cep" class="form-label">CEP: </label>
+                    <input type="text" th:field="*{cep}" id="cep" name="cep" class="form-controls"
+                           placeholder="CEP..." />
+                </div>
+
+                <div class="form-groups">
+                    <label for="senha" class="form-label">Senha: </label>
+                    <input type="password" th:field="*{senha}" id="senha" name="senha" class="form-controls"
+                           placeholder="Senha..." />
+                </div>
+
+                <div class="d-blocked-buttons" style="margin-top: 16px">
+                    <input type="submit" value="Cadastrar">
+                </div>
+            </form>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+            <div class="d-blocked-buttons" style="margin-top: 16px; width: 420px;">
+                <a class="btn" th:href="@{/}">Voltar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

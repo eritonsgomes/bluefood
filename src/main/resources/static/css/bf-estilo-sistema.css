@@ -128,6 +128,26 @@ input[type=submit]:hover {
   border-color: #1e9bde;
 }
 
+.btn {
+    background-color: #1e9bde;
+    border: 2px solid #0153b0;
+    border-bottom: 4px solid #0153b0;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #69c5ee;
+  border-color: #1e9bde;
+  text-decoration: none;
+}
+
 table
 {
   margin-left: auto;

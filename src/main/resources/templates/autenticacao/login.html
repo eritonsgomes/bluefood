@@ -9,7 +9,7 @@
     <div layout:fragment="content">
         <div class="container">
             <div class="row">
-                <img th:src="@{images/bf-icone-usuario.png}" id="img-icone-usuario" />
+                <img th:src="@{/images/bf-icone-usuario.png}" id="img-icone-usuario" />
 
                 <h1>Autenticação</h1>
 
@@ -26,7 +26,7 @@
 
                         <div class="d-blocked-buttons" style="margin-top: 16px">
                             <input type="button" value="Entrar" />
-                            <input type="button" value="Criar Conta de Usuário" />
+                            <a class="btn" th:href="@{/public/cliente}">Criar Conta de Usuário</a>
                             <input type="button" value="Criar Conta de Restaurante" />
                         </div>
                     </form>
