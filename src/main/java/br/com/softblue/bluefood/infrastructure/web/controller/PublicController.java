@@ -17,16 +17,17 @@ public class PublicController {
     @Autowired
     ClienteService clienteService;
 
-    @GetMapping(path = "/cliente")
+    @GetMapping(path = "/cliente/novo-cadastro")
     public String novoCliente(Model model) {
         Cliente novoCliente = Cliente.builder().build();
 
         model.addAttribute("cliente", novoCliente);
+        ControllerHelper.setEditMode(model, Boolean.FALSE);
 
         return "cliente/cad-cliente";
     }
 
-    @PostMapping(path = "/cliente")
+    @PostMapping(path = "/cliente/salva-cadastro")
     public String salvaCliente(@ModelAttribute(name = "cliente") Cliente cliente) {
         clienteService.save(cliente);
 

@@ -14,7 +14,11 @@
         </div>
 
         <div class="d-flex flex-column align-items-center">
-            <form method="post" th:object="${cliente}" style="width: 420px;" th:action="@{/public/cliente}">
+            <form method="post" th:object="${cliente}" style="width: 420px;"
+                  th:action="@{isEditMode == true} ? @{/cliente/edita-cadastro} : @{/public/cliente/salva-cadastro}">
+
+                <input type="hidden" id="id" name="id" th:value="*{id}" />
+
                 <div class="form-groups">
                     <label for="nome" class="form-label">Nome: </label>
                     <input type="text" th:field="*{nome}" id="nome" name="nome" class="form-controls"
@@ -52,7 +56,7 @@
                 </div>
 
                 <div class="d-blocked-buttons" style="margin-top: 16px">
-                    <input type="submit" value="Cadastrar">
+                    <input type="submit" th:value="@{isEditMode == true} ? 'Editar' : 'Cadastrar'">
                 </div>
             </form>
         </div>
