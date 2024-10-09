@@ -77,6 +77,16 @@ h1 {
  padding: 10px;
 }
 
+.mensagem-de-sucesso {
+    background-color: #0baf00;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 10px;
+}
+
 #usuario-logado {
   background-color: #7bc2e5;
   color: #ffffff;
@@ -126,6 +136,10 @@ input[type=button]:hover,
 input[type=submit]:hover {
   background-color: #69c5ee;
   border-color: #1e9bde;
+}
+
+.inputError {
+    border: 2px solid #ff2828 !important;
 }
 
 .btn {
@@ -270,6 +284,17 @@ td {
   width: -webkit-fill-available;
   padding: 6px;
   font-size: 16px;
+}
+
+.form-control-error-msg {
+    background-color: #d40000;
+    width: -webkit-fill-available;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 10px;
+    margin-top: 8px;
 }
 
 .w-100 {
