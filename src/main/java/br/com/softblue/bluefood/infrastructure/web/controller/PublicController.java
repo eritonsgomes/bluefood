@@ -1,6 +1,7 @@
 package br.com.softblue.bluefood.infrastructure.web.controller;
 
 import br.com.softblue.bluefood.application.ClienteService;
+import br.com.softblue.bluefood.application.EmailValidationException;
 import br.com.softblue.bluefood.domain.cliente.Cliente;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,12 @@ public class PublicController {
         Errors errors, Model model) {
 
         if (!errors.hasErrors()) {
-            clienteService.save(cliente);
-            model.addAttribute("msg", "Cliente cadastrado com sucesso");
+            try {
+                clienteService.save(cliente);
+                model.addAttribute("msg", "Cliente cadastrado com sucesso");
+            } catch (EmailValidationException e) {
+                errors.rejectValue("email", "404", e.getMessage());
+            }
         }
 
         ControllerHelper.setEditMode(model, Boolean.FALSE);
