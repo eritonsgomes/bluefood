@@ -1,6 +1,7 @@
 package br.com.softblue.bluefood.domain.cliente;
 
 import br.com.softblue.bluefood.domain.usuario.Usuario;
+import br.com.softblue.bluefood.util.PasswordUtil;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -30,5 +31,10 @@ public class Cliente extends Usuario implements Serializable {
     @Pattern(regexp = "[0-9]{8}", message = "O CEP possui formato inválido")
     @Column(length = 8)
     private String cep;
+    
+    public void encryptPassword() {
+        String senhaCriptografada = PasswordUtil.encrypt(this.getSenha());
+        this.setSenha(senhaCriptografada);
+    }
 
 }

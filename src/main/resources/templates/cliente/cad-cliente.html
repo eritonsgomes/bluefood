@@ -67,12 +67,16 @@
                     </span>
                 </div>
 
-                <div class="form-groups">
+                <div class="form-groups" th:if="${isEditMode == false}">
                     <label for="senha" class="form-label">Senha: </label>
                     <input type="password" th:field="*{senha}" id="senha" name="senha" placeholder="Senha..."
                            class="form-controls" th:classappend="${#fields.hasErrors('senha')} ? 'inputError' : ''" />
                     <span class="form-control-error-msg" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}">
                     </span>
+                </div>
+
+                <div class="form-groups" th:if="${isEditMode == true}">
+                    <input type="hidden" name="senha" value="*">
                 </div>
 
                 <div class="d-blocked-buttons" style="margin-top: 16px">
