@@ -3,13 +3,13 @@
         xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
         xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}">
 <head>
-    <title>BlueFood - Cadastro de Cliente</title>
+    <title>BlueFood - Cadastro de Restaurante</title>
 </head>
 <body>
     <div layout:fragment="content">
         <div class="container">
             <div class="row">
-                <h1>Cadastro de Cliente</h1>
+                <h1>Cadastro de Restaurante</h1>
             </div>
         </div>
 
@@ -19,8 +19,8 @@
         </div>
 
         <div class="d-flex flex-column align-items-center">
-            <form method="post" th:object="${cliente}" style="width: 420px;"
-                  th:action="@{isEditMode == true} ? @{/cliente/edita-cadastro} : @{/public/cliente/salva-cadastro}">
+            <form method="post" th:object="${restaurante}" style="width: 420px;" enctype="multipart/form-data"
+                  th:action="@{isEditMode == true} ? @{/restaurante/edita-cadastro} : @{/public/restaurante/salva-cadastro}">
 
                 <input type="hidden" id="id" name="id" th:value="*{id}" />
 
@@ -33,11 +33,11 @@
                 </div>
 
                 <div class="form-groups">
-                    <label for="cpf" class="form-label">CPF: </label>
-                    <input type="text" th:field="*{cpf}" id="cpf" name="cpf" placeholder="CPF..."
-                           class="form-controls" th:classappend="${#fields.hasErrors('cpf')} ? 'inputError' : ''"
+                    <label for="cnpj" class="form-label">CNPJ: </label>
+                    <input type="text" th:field="*{cnpj}" id="cnpj" name="cnpj" placeholder="CNPJ..."
+                           class="form-controls" th:classappend="${#fields.hasErrors('cnpj')} ? 'inputError' : ''"
                            onkeydown="return isNumberKey(event);" />
-                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">
+                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}">
                     </span>
                 </div>
 
@@ -54,16 +54,52 @@
                     <input type="text" th:field="*{telefone}" id="telefone" name="telefone" placeholder="Telefone..."
                            class="form-controls" th:classappend="${#fields.hasErrors('telefone')} ? 'inputError' : ''"
                            onkeydown="return isNumberKey(event);" />
-                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">
+                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('telefone')}"
+                          th:errors="*{telefone}">
                     </span>
                 </div>
 
                 <div class="form-groups">
-                    <label for="cep" class="form-label">CEP: </label>
-                    <input type="text" th:field="*{cep}" id="cep" name="cep" placeholder="CEP..."
-                           class="form-controls" th:classappend="${#fields.hasErrors('cep')} ? 'inputError' : ''"
-                           onkeydown="return isNumberKey(event);" />
-                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">
+                    <label for="taxaEntregaBase" class="form-label">Taxa de Entrega: </label>
+                    <input type="text" th:field="*{taxaEntregaBase}" id="taxaEntregaBase" name="taxaEntregaBase"
+                           placeholder="Taxa de Entrega..." class="form-controls"
+                           th:classappend="${#fields.hasErrors('taxaEntregaBase')} ? 'inputError' : ''" />
+                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('taxaEntregaBase')}"
+                          th:errors="*{taxaEntregaBase}">
+                    </span>
+                </div>
+
+                <div class="form-groups">
+                    <label for="tempoEntrega" class="form-label">Taxa de Entrega: </label>
+                    <input type="text" th:field="*{tempoEntrega}" id="tempoEntrega" name="tempoEntrega"
+                           placeholder="Taxa de Entrega..." class="form-controls"
+                           th:classappend="${#fields.hasErrors('tempoEntrega')} ? 'inputError' : ''" />
+                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('tempoEntrega')}"
+                          th:errors="*{tempoEntrega}">
+                    </span>
+                </div>
+
+                <div class="form-groups">
+                    <label for="categorias" class="form-label">Categoria de Comida: </label>
+                    <select id="categorias" name="categorias" multiple="multiple" style="height: 100px;"
+                            class="form-controls" th:field="*{categorias}"
+                            th:classappend="${#fields.hasErrors('categorias')} ? 'inputError' : ''">
+                        <option th:each="categoria : ${categorias}" th:value="${categoria.id}"
+                                th:text="${categoria.nome}">
+                        </option>
+                    </select>
+                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('categorias')}"
+                          th:errors="*{categorias}">
+                    </span>
+                </div>
+
+                <div class="form-groups">
+                    <label for="arquivoLogotipo" class="form-label">Logotipo: </label>
+                    <input type="file" th:field="*{arquivoLogotipo}" id="arquivoLogotipo" name="arquivoLogotipo"
+                           placeholder="Selecionar..." class="form-controls"
+                           th:classappend="${#fields.hasErrors('arquivoLogotipo')} ? 'inputError' : ''" />
+                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('arquivoLogotipo')}"
+                          th:errors="*{arquivoLogotipo}">
                     </span>
                 </div>
 

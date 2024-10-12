@@ -13,38 +13,38 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ClienteService {
+public class RestauranteService {
 
     private final ClienteRepository clienteRepository;
     private final RestauranteRepository restauranteRepository;
 
     @Transactional
-    public void save(Cliente cliente) {
-        validateEmail(cliente.getEmail(), cliente.getId());
+    public void save(Restaurante restaurante) {
+        validateEmail(restaurante.getEmail(), restaurante.getId());
 
-        if (cliente.getId() != null) {
-            Optional<Cliente> clienteEncontrado = clienteRepository.findById(cliente.getId());
-            clienteEncontrado.ifPresent(cli -> cliente.setSenha(cli.getSenha()));
+        if (restaurante.getId() != null) {
+            Optional<Restaurante> restauranteEncontrado = restauranteRepository.findById(restaurante.getId());
+            restauranteEncontrado.ifPresent(cli -> restaurante.setSenha(cli.getSenha()));
         } else {
-            cliente.encryptPassword();
+            restaurante.encryptPassword();
         }
 
-        clienteRepository.save(cliente);
+        restauranteRepository.save(restaurante);
     }
 
     public void validateEmail(String email, Long id) throws EmailValidationException {
-        Restaurante restauranteEncontrado = restauranteRepository.findByEmail(email);
-
-        if (restauranteEncontrado != null) {
-            throw new EmailValidationException("O E-mail está sendo utilizado");
-        }
-
         Cliente clienteEncontrado = clienteRepository.findByEmail(email);
 
         if (clienteEncontrado != null) {
-            boolean isIdClienteEncontradoEqualAoId = clienteEncontrado.getId().equals(id);
+            throw new EmailValidationException("O E-mail está sendo utilizado");
+        }
 
-            if (!isIdClienteEncontradoEqualAoId) {
+        Restaurante restauranteEncontrado = restauranteRepository.findByEmail(email);
+
+        if (restauranteEncontrado != null) {
+            boolean isIdRestauranteEncontradoEqualAoId = restauranteEncontrado.getId().equals(id);
+
+            if (!isIdRestauranteEncontradoEqualAoId) {
                 throw new EmailValidationException("O E-mail está sendo utilizado");
             }
         }
