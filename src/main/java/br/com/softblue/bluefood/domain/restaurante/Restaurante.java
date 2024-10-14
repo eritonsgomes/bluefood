@@ -1,6 +1,8 @@
 package br.com.softblue.bluefood.domain.restaurante;
 
 import br.com.softblue.bluefood.domain.usuario.Usuario;
+import br.com.softblue.bluefood.infrastructure.web.validator.LogotipoRestauranteUploadConstraint;
+import br.com.softblue.bluefood.util.FileType;
 import br.com.softblue.bluefood.util.PasswordUtil;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -27,19 +29,20 @@ public class Restaurante extends Usuario implements Serializable {
     @Column(length = 14, nullable = false)
     private String cnpj;
 
-    private String logotipo;
+    private String nomeDoArquivoLogotipo;
 
+    @LogotipoRestauranteUploadConstraint(acceptedTypes = { FileType.JPG, FileType.PNG })
     private transient MultipartFile arquivoLogotipo;
 
     @NotNull(message = "A Taxa de Entrega não pode ser vazia")
     @Min(0)
     @Max(99)
-    private BigDecimal taxaEntregaBase;
+    private BigDecimal taxaDeEntregaBase;
 
     @NotNull(message = "O Tempo de Entrega não pode ser vazio")
     @Min(0)
     @Max(120)
-    private Integer tempoEntrega;
+    private Integer tempoDeEntrega;
 
     @ManyToMany
     @JoinTable(
@@ -51,6 +54,18 @@ public class Restaurante extends Usuario implements Serializable {
     @ToString.Exclude
     @Builder.Default
     private Set<CategoriaRestaurante> categorias = new HashSet<>(0);
+
+    public void setNomeDoArquivoDoLogotipo() {
+        if (this.getId() == null) {
+            throw new IllegalArgumentException("O ID do Registro não pode ser nulo");
+        }
+
+        FileType fileType = FileType.of(arquivoLogotipo.getContentType());
+
+        if (fileType != null) {
+            this.nomeDoArquivoLogotipo = String.format("img-logo-rest-%d.%s", getId(), fileType.getExtension());
+        }
+    }
 
     public void encryptPassword() {
         String senhaCriptografada = PasswordUtil.encrypt(this.getSenha());

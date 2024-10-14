@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RestauranteService {
 
+    private final ImageService imageService;
     private final ClienteRepository clienteRepository;
     private final RestauranteRepository restauranteRepository;
 
@@ -24,12 +25,17 @@ public class RestauranteService {
 
         if (restaurante.getId() != null) {
             Optional<Restaurante> restauranteEncontrado = restauranteRepository.findById(restaurante.getId());
-            restauranteEncontrado.ifPresent(cli -> restaurante.setSenha(cli.getSenha()));
+
+            if(restauranteEncontrado.isPresent()) {
+                Restaurante rest = restauranteEncontrado.get();
+                restaurante.setSenha(rest.getSenha());
+            }
         } else {
             restaurante.encryptPassword();
+            restaurante = restauranteRepository.save(restaurante);
+            restaurante.setNomeDoArquivoDoLogotipo();
+            imageService.uploadLogotipo(restaurante.getArquivoLogotipo(), restaurante.getNomeDoArquivoLogotipo());
         }
-
-        restauranteRepository.save(restaurante);
     }
 
     public void validateEmail(String email, Long id) throws EmailValidationException {

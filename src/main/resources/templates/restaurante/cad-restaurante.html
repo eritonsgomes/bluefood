@@ -60,22 +60,22 @@
                 </div>
 
                 <div class="form-groups">
-                    <label for="taxaEntregaBase" class="form-label">Taxa de Entrega: </label>
-                    <input type="text" th:field="*{taxaEntregaBase}" id="taxaEntregaBase" name="taxaEntregaBase"
+                    <label for="taxaDeEntregaBase" class="form-label">Taxa de Entrega: </label>
+                    <input type="text" th:field="*{taxaDeEntregaBase}" id="taxaDeEntregaBase" name="taxaDeEntregaBase"
                            placeholder="Taxa de Entrega..." class="form-controls"
-                           th:classappend="${#fields.hasErrors('taxaEntregaBase')} ? 'inputError' : ''" />
-                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('taxaEntregaBase')}"
-                          th:errors="*{taxaEntregaBase}">
+                           th:classappend="${#fields.hasErrors('taxaDeEntregaBase')} ? 'inputError' : ''" />
+                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('taxaDeEntregaBase')}"
+                          th:errors="*{taxaDeEntregaBase}">
                     </span>
                 </div>
 
                 <div class="form-groups">
-                    <label for="tempoEntrega" class="form-label">Taxa de Entrega: </label>
-                    <input type="text" th:field="*{tempoEntrega}" id="tempoEntrega" name="tempoEntrega"
-                           placeholder="Taxa de Entrega..." class="form-controls"
-                           th:classappend="${#fields.hasErrors('tempoEntrega')} ? 'inputError' : ''" />
-                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('tempoEntrega')}"
-                          th:errors="*{tempoEntrega}">
+                    <label for="tempoDeEntrega" class="form-label">Tempo de Entrega: </label>
+                    <input type="text" th:field="*{tempoDeEntrega}" id="tempoDeEntrega" name="tempoDeEntrega"
+                           placeholder="Tempo de Entrega..." class="form-controls"
+                           th:classappend="${#fields.hasErrors('tempoDeEntrega')} ? 'inputError' : ''" />
+                    <span class="form-control-error-msg" th:if="${#fields.hasErrors('tempoDeEntrega')}"
+                          th:errors="*{tempoDeEntrega}">
                     </span>
                 </div>
 
