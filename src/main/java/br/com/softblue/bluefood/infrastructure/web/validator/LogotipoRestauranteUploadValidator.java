@@ -24,6 +24,10 @@ public class LogotipoRestauranteUploadValidator implements ConstraintValidator<L
             return true;
         }
 
+        if (multipartFile.isEmpty()) {
+            return true;
+        }
+
         boolean hasFoundFileType = acceptedTypes.stream().anyMatch(
                 fileType -> fileType.sameOf(multipartFile.getContentType())
         );

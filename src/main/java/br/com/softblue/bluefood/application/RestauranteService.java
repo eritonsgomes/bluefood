@@ -33,8 +33,11 @@ public class RestauranteService {
         } else {
             restaurante.encryptPassword();
             restaurante = restauranteRepository.save(restaurante);
-            restaurante.setNomeDoArquivoDoLogotipo();
-            imageService.uploadLogotipo(restaurante.getArquivoLogotipo(), restaurante.getNomeDoArquivoLogotipo());
+
+            if (!restaurante.getArquivoLogotipo().isEmpty()) {
+                restaurante.setNomeDoArquivoDoLogotipo();
+                imageService.uploadLogotipo(restaurante.getArquivoLogotipo(), restaurante.getNomeDoArquivoLogotipo());
+            }
         }
     }
 
