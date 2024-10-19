@@ -1,8 +1,8 @@
 package br.com.softblue.bluefood.infrastructure.web.controller;
 
-import br.com.softblue.bluefood.application.ClienteService;
-import br.com.softblue.bluefood.application.EmailValidationException;
-import br.com.softblue.bluefood.application.RestauranteService;
+import br.com.softblue.bluefood.application.service.ClienteService;
+import br.com.softblue.bluefood.application.exception.EmailValidationException;
+import br.com.softblue.bluefood.application.service.RestauranteService;
 import br.com.softblue.bluefood.domain.cliente.Cliente;
 import br.com.softblue.bluefood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.softblue.bluefood.domain.restaurante.Restaurante;

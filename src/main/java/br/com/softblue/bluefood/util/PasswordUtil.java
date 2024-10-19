@@ -1,7 +1,7 @@
 package br.com.softblue.bluefood.util;
 
-//import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class PasswordUtil {
 
@@ -10,10 +10,8 @@ public class PasswordUtil {
             return null;
         }
 
-        //PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        //return encoder.encode(str);
-
-        return str;
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return encoder.encode(str);
     }
 
 }

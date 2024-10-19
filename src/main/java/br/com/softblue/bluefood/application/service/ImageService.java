@@ -1,5 +1,6 @@
-package br.com.softblue.bluefood.application;
+package br.com.softblue.bluefood.application.service;
 
+import br.com.softblue.bluefood.application.exception.ApplicationServiceException;
 import br.com.softblue.bluefood.util.IOUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
