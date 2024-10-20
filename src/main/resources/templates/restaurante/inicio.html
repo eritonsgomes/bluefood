@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}">
+    <head>
+        <title>BlueFood - Início</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="container">
+                <div class="row">
+                    <h1>Restaurante</h1>
+                </div>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <div class="d-blocked-buttons" style="margin-top: 16px; width: 420px;">
+                    <a class="btn" th:href="@{/autenticacao/logout}">Sair</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

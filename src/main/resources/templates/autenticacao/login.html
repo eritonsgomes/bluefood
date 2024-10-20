@@ -13,19 +13,23 @@
 
                 <h1>Autenticação</h1>
 
+                <div class="d-flex flex-column align-items-center" th:if="${msg != null}">
+                    <span class="mensagem-de-erro" style="margin-bottom: 8px;" th:text="${msg}"></span>
+                </div>
+
                 <div class="d-flex flex-column align-items-center">
-                    <form method="post" style="width: 420px;" action="">
+                    <form method="post" style="width: 420px;" th:action="@{/autenticacao/login}">
                         <div class="form-groups">
-                            <label for="email" class="form-label">E-mail:</label>
-                            <input type="text" id="email" name="email" class="form-controls" placeholder="E-mail..." />
+                            <label for="username" class="form-label">E-mail:</label>
+                            <input type="text" id="username" name="username" class="form-controls" placeholder="E-mail..." />
                         </div>
                         <div class="form-groups">
-                            <label for="senha" class="form-label">Senha:</label>
-                            <input type="password" id="senha" name="senha" class="form-controls" placeholder="Senha..." />
+                            <label for="password" class="form-label">Senha:</label>
+                            <input type="password" id="password" name="password" class="form-controls" placeholder="Senha..." />
                         </div>
 
                         <div class="d-blocked-buttons" style="margin-top: 16px">
-                            <input type="button" value="Entrar" />
+                            <input type="submit" value="Entrar" />
                             <a class="btn" th:href="@{/public/cliente/novo-cadastro}">Criar Conta de Usuário</a>
                             <a class="btn" th:href="@{/public/restaurante/novo-cadastro}">Criar Conta de Restaurante</a>
                         </div>
