@@ -12,7 +12,7 @@
     <header id="header">
         <div id="logotipo-sistema">
             <span id="auxiliar-de-alinhamento-vertical"></span>
-            <a href="">
+            <a th:href="${link} == null ? @{/} : ${link}">
                 <img th:src="@{/images/bf-logotipo-sistema.png}" id="img-logotipo-sistema">
             </a>
         </div>

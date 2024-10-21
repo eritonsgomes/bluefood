@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html
         xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}">
+        xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}"
+        th:with="link=@{/cliente/inicio}">
     <head>
         <title>BlueFood - Início</title>
     </head>
@@ -9,10 +10,66 @@
         <div layout:fragment="content">
             <div class="container">
                 <div class="row">
-                    <h1>Cliente</h1>
+                    <h1>É hora de rangar!</h1>
+                    <form method="post" action="clienteBusca.html">
+                        <fieldset>
+                            <input type="text" name="email" placeholder="Buscar por...">
+                            <input type="submit" value="Procurar">
+                        </fieldset>
+                    </form>
+                    <br>
+                </div>
+
+                <div class="row categoria-comida-geral">
+                    <div class="categoria-comida-opcao">
+                        <a href="#">
+                            <img src="images/sys_categoriaChurrasco.png" class="img-categoria-comida"><br>
+                            <span>Churrasco</span>
+                        </a>
+                    </div>
+
+                    <div class="categoria-comida-opcao">
+                        <a href="#">
+                            <img src="images/sys_categoriaHamburguer.png" class="img-categoria-comida"><br>
+                            <span>Hamburguer</span>
+                        </a>
+                    </div>
+
+                    <div class="categoria-comida-opcao">
+                        <a href="#">
+                            <img src="images/sys_categoriaPizza.png" class="img-categoria-comida"><br>
+                            <span>Pizza</span>
+                        </a>
+                    </div>
+
+                    <div class="categoria-comida-opcao">
+                        <a href="#">
+                            <img src="images/sys_categoriaSalada.png" class="img-categoria-comida"><br>
+                            <span>Salada</span>
+                        </a>
+                    </div>
+
+                    <div class="categoria-comida-opcao">
+                        <a href="#">
+                            <img src="images/sys_categoriaSobremesa.png" class="img-categoria-comida"><br>
+                            <span>Sobremesa</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h1>Últimos pedidos</h1>
+                    <input type="button" value="#15124 McBlunalds" onClick="location.href='clientePedido.html';"><br>
+                    <input type="button" value="#35464 Blue Pizza" onClick="location.href='clientePedido.html';"><br>
+                    <input type="button" value="#38754 Hard Blue" onClick="location.href='clientePedido.html';"><br>
+                </div>
+
+                <div class="row">
+                    <h1>Conta</h1>
                 </div>
                 <div class="d-flex flex-column align-items-center">
                     <div class="d-blocked-buttons" style="margin-top: 16px; width: 420px;">
+                        <a class="btn" th:href="@{/cliente/edita-cadastro}">Meus Dados</a>
                         <a class="btn" th:href="@{/autenticacao/logout}">Sair</a>
                     </div>
                 </div>

@@ -107,6 +107,22 @@ h1 {
   height: 50px;
 }
 
+.categoria-comida-opcao {
+  background-color: #ffffff;
+  height: 130px;
+  float: left;
+}
+
+.categoria-comida-geral {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-categoria-comida {
+  height: 50%;
+}
+
 fieldset {
   width: 400px;
   margin-left: auto;

@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 
 public class ControllerHelper {
 
-    public static void setEditMode(Boolean isEditMode, Model model) {
+    public static void setEditMode(boolean isEditMode, Model model) {
         model.addAttribute("isEditMode", isEditMode);
     }
 

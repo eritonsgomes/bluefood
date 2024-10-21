@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html
         xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}">
+        xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}"
+        th:with="link=@{/cliente/inicio}">
 <head>
     <title>BlueFood - Cadastro de Cliente</title>
 </head>
@@ -20,7 +21,7 @@
 
         <div class="d-flex flex-column align-items-center">
             <form method="post" th:object="${cliente}" style="width: 420px;"
-                  th:action="@{isEditMode == true} ? @{/cliente/edita-cadastro} : @{/public/cliente/salva-cadastro}">
+                  th:action="${isEditMode} ? @{/cliente/salva-cadastro} : @{/public/cliente/salva-cadastro}">
 
                 <input type="hidden" id="id" name="id" th:value="*{id}" />
 
@@ -80,14 +81,14 @@
                 </div>
 
                 <div class="d-blocked-buttons" style="margin-top: 16px">
-                    <input type="submit" th:value="@{isEditMode == true} ? 'Editar' : 'Cadastrar'">
+                    <input type="submit" th:value="${isEditMode} ? 'Editar' : 'Cadastrar'">
                 </div>
             </form>
         </div>
 
         <div class="d-flex flex-column align-items-center">
             <div class="d-blocked-buttons" style="margin-top: 16px; width: 420px;">
-                <a class="btn" th:href="@{/}">Voltar</a>
+                <a class="btn" th:href="${link} == null ? @{/} : ${link}">Voltar</a>
             </div>
         </div>
     </div>
