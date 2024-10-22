@@ -48,8 +48,8 @@ h1 {
   font-style: italic;
   font-size: 20px;
   width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 4px 0;
+  margin: 4px auto;
   border-left: 10px solid #1e9bde;
   border-right: 10px solid #1e9bde;
   border-top: 2px solid #1e9bde;
@@ -107,20 +107,31 @@ h1 {
   height: 50px;
 }
 
-.categoria-comida-opcao {
-  background-color: #ffffff;
-  height: 130px;
-  float: left;
+.categoria-comida-geral {
+    display: grid;
+    grid-template-columns: repeat(3, 128px);
+    max-width: 400px;
+    grid-gap: 8px;
+    margin: 8px auto 8px auto;
 }
 
-.categoria-comida-geral {
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
+.categoria-comida-opcao {
+  height: 50px;
+  padding: 8px;
 }
 
 .img-categoria-comida {
   height: 50%;
+}
+
+.categoria-comida-opcao > a {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.categoria-comida-opcao > a:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 fieldset {
@@ -138,7 +149,8 @@ textarea {
   height: 100px;
 }
 
-input[type=text], input[type=tel], input[type=email], input[type=password], input[type=file], select {
+input[type=text], input[type=tel], input[type=email], input[type=password], input[type=file], input[type=search],
+select {
     border: 2px solid #1e9bde;
     font-size: 16px;
     cursor: pointer;
@@ -216,22 +228,6 @@ td {
  padding: 3px;
 }
 
-#categorias-comida-opcao {
-  background-color: #ffffff;
-  height: 130px;
-  float: left;
-}
-
-#categorias-comida-geral {
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-}
-
-#img-categoria-comida {
-  height: 50%;
-}
-
 #fieldset-filtros {
   border-width: 3px;
 }
@@ -305,11 +301,24 @@ td {
   display: inline-block;
 }
 
+.inline-form-groups {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 4px 4px;
+}
+
 .form-groups > .form-controls {
   margin-top: 8px;
   width: -webkit-fill-available;
   padding: 6px;
   font-size: 16px;
+}
+
+.inline-form-groups > .form-controls {
+    width: -webkit-fill-available;
+    padding: 6px;
+    font-size: 16px;
 }
 
 .form-control-error-msg {

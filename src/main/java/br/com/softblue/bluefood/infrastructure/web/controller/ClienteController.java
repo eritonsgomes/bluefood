@@ -4,9 +4,12 @@ import br.com.softblue.bluefood.application.exception.EmailValidationException;
 import br.com.softblue.bluefood.application.service.ClienteService;
 import br.com.softblue.bluefood.domain.cliente.Cliente;
 import br.com.softblue.bluefood.domain.cliente.ClienteRepository;
+import br.com.softblue.bluefood.domain.restaurante.CategoriaRestaurante;
+import br.com.softblue.bluefood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.softblue.bluefood.util.SecurityUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -24,9 +28,13 @@ public class ClienteController {
 
     private final ClienteService clienteService;
     private final ClienteRepository clienteRepository;
+    private final CategoriaRestauranteRepository categoriaRestauranteRepository;
 
     @GetMapping(path = "/inicio")
-    public String inicio() {
+    public String inicio(Model model) {
+        List<CategoriaRestaurante> categorias = categoriaRestauranteRepository.findAll(Sort.by("nome"));
+        model.addAttribute("categorias", categorias);
+
         return "cliente/inicio";
     }
 
