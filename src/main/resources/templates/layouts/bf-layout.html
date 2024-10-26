@@ -16,6 +16,9 @@
                 <img th:src="@{/images/bf-logotipo-sistema.png}" id="img-logotipo-sistema">
             </a>
         </div>
+        <div id="usuario-logado" th:if="${#authentication.principal != 'anonymousUser'}">
+            <span th:text="'Olá, ' + ${#authentication.principal.usuario.nome} + '!'"></span>
+        </div>
     </header>
 
     <main id="content" layout:fragment="content">
