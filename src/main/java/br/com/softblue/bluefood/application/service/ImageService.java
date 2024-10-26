@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 @RequiredArgsConstructor
 public class ImageService {
 
-    @Value("${bluefood.files.restaurante.logotipo}")
+    @Value("${bluefood.files.logotipos}")
     public String dirLogotipoRestaurante;
 
     @Value("${bluefood.files.categorias}")

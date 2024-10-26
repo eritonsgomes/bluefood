@@ -20,7 +20,7 @@
         </div>
 
         <div class="d-flex flex-column align-items-center">
-            <form method="post" th:object="${cliente}" style="width: 420px;"
+            <form method="post" th:object="${cliente}" style="width: 450px;"
                   th:action="${isEditMode} ? @{/cliente/salva-cadastro} : @{/public/cliente/salva-cadastro}">
 
                 <input type="hidden" id="id" name="id" th:value="*{id}" />
@@ -87,7 +87,7 @@
         </div>
 
         <div class="d-flex flex-column align-items-center">
-            <div class="d-blocked-buttons" style="margin-top: 16px; width: 420px;">
+            <div class="d-blocked-buttons" style="margin-top: 16px; width: 450px;">
                 <a class="btn" th:href="${link} == null ? @{/} : ${link}">Voltar</a>
             </div>
         </div>

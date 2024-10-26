@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/bf-layout}"
+        th:with="link=@{/cliente/inicio}">
+<head>
+    <title>BlueFood - Pesquisar</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <h1>É hora de rangar!</h1>
+
+                <form method="GET" id="form-busca-restaurante" class="form-busca-restaurante"
+                      th:object="${filtroDeBusca}" th:action="@{/cliente/busca}">
+
+                    <input id="tipo-de-busca" type="hidden" th:field="*{tipoDeBusca}" />
+                    <input id="categoria-id" type="hidden" th:field="*{categoriaId}" />
+
+                    <div class="d-flex flex-column align-items-center">
+                            <div class="inline-form-groups">
+                                <input type="search" th:field="*{texto}" id="texto-busca" name="texto-busca"
+                                       placeholder="Pesquise por..." class="form-controls"
+                                       th:classappend="${#fields.hasErrors('texto')} ? 'inputError' : ''" />
+                                <span class="form-control-error-msg" th:if="${#fields.hasErrors('texto')}"
+                                      th:errors="*{texto}">
+                                </span>
+                                <input type="button" onclick="buscaRestaurante(null);" value="Procurar" />
+                            </div>
+                    </div>
+
+                    <div class="categoria-comida-geral">
+                        <div class="categoria-comida-opcao" th:each="categoria: ${categorias}">
+                            <a href="#" th:onclick="'buscaRestaurante(' + ${categoria.id} + ');'">
+                                <img th:src="@{/images/categorias/} + ${categoria.imagem}" class="img-categoria-comida"><br>
+                                <span th:text="${categoria.nome}">Categoria</span>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <div class="filtro-pesquisa-geral-cols1">
+                <input type="button" value="Entrega grátis" class="input-selecionado">
+            </div>
+
+            <div class="filtro-pesquisa-geral-cols2">
+                <input type="button" value="Menor preço">
+                <input type="button" value="Maior preço">
+
+                <input type="button" value="Menor taxa">
+                <input type="button" value="Maior taxa">
+
+                <input type="button" value="Menor tempo">
+                <input type="button" value="Maior tempo">
+            </div>
+        </div>
+
+        <div class="row">
+            <h1>Resultados</h1>
+        </div>
+
+        <div class="restaurantes-geral" th:if="${restaurantes.size() > 0}">
+            <div id="restaurantes-opcao" th:each="restaurante: ${restaurantes}">
+                <a href="clienteRestaurante.html">
+                    <img th:src="@{/images/logotipos/} + ${restaurante.nomeDoArquivoLogotipo}" class="img-restaurante-opcao"> <br />
+                    <span class="restaurante-opcao-titulo" th:text="${restaurante.nome}"></span> <br />
+                    <span th:text="${restaurante.categoriasAsText}">Categorias de Comida</span> <br/>
+                    <span th:text="'Tempo de Entrega: ' + ${restaurante.tempoDeEntrega} + 'm'">60 min</span> <br />
+                    <span th:text="'Taxa: ' + ${#numbers.formatCurrency(restaurante.taxaDeEntregaBase)}">R$ 15,00</span> <br />
+                </a>
+            </div>
+            <br><br>
+        </div>
+
+        <div th:if="${restaurantes.size() == 0}">
+            <span>Nenhum restaurante encontrado</span>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+            <div class="d-blocked-buttons" style="margin-top: 16px; width: 450px;">
+                <a class="btn" th:href="${link} == null ? @{/} : ${link}">Voltar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

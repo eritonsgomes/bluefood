@@ -47,7 +47,7 @@ h1 {
   text-transform: uppercase;
   font-style: italic;
   font-size: 20px;
-  width: 400px;
+  width: 450px;
   padding: 4px 0;
   margin: 4px auto;
   border-left: 10px solid #1e9bde;
@@ -57,44 +57,26 @@ h1 {
   border-radius: 30px;
 }
 
-#mensagem-de-erro {
-  background-color: #d40000;
-  width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 10px;
-  color: #ffffff;
-  padding: 10px;
-}
-
-#mensagem-de-sucesso {
- background-color: #0baf00;
- width: 400px;
- margin-left: auto;
- margin-right: auto;
- border-radius: 10px;
- color: #ffffff;
- padding: 10px;
-}
-
 .mensagem-de-sucesso {
     background-color: #0baf00;
-    width: 400px;
+    width: 420px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
     color: #ffffff;
     padding: 10px;
+    margin-top: 8px;
 }
 
 .mensagem-de-erro {
     background-color: #d40000;
-    width: 400px;
+    width: 420px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
     color: #ffffff;
     padding: 10px;
+    margin-top: 8px;
 }
 
 #usuario-logado {
@@ -107,12 +89,17 @@ h1 {
   height: 50px;
 }
 
+.form-busca-restaurante {
+    width: 450px;
+    margin: 8px auto 0 auto;
+}
+
 .categoria-comida-geral {
     display: grid;
-    grid-template-columns: repeat(3, 128px);
-    max-width: 400px;
+    grid-template-columns: repeat(3, 145px);
+    max-width: 450px;
     grid-gap: 8px;
-    margin: 8px auto 8px auto;
+    margin: 8px auto 0 auto;
 }
 
 .categoria-comida-opcao {
@@ -121,7 +108,7 @@ h1 {
 }
 
 .img-categoria-comida {
-  height: 50%;
+  height: 60%;
 }
 
 .categoria-comida-opcao > a {
@@ -135,7 +122,7 @@ h1 {
 }
 
 fieldset {
-  width: 400px;
+  width: 450px;
   margin-left: auto;
   margin-right: auto;
   border: none;
@@ -228,32 +215,46 @@ td {
  padding: 3px;
 }
 
-#fieldset-filtros {
-  border-width: 3px;
+.filtro-pesquisa-geral-cols1 {
+	display: grid;
+	grid-template-columns: 1fr;
+	max-width: 450px;
+    grid-gap: 8px;
+    margin: 8px auto 8px auto;
 }
 
-#input-selecionado {
-  background-color: #69c5ee;
-  border-color: #1e9bde;
+.filtro-pesquisa-geral-cols2 {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	max-width: 450px;
+    grid-gap: 8px;
+    margin: 8px auto 8px auto;
 }
 
-#img-restaurante-opcao {
-  height: 130px;
-}
-
-#restaurante-opcao-titulo {
+.restaurante-opcao-titulo {
   font-weight: bold;
   text-transform: uppercase;
 }
 
-#restaurante-opcao {
-  width: 400px;
+.restaurantes-geral {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 450px;
+    grid-gap: 16px;
+    margin: 8px auto 8px auto;
+}
+
+.restaurante-opcao {
+  width: 450px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.inputError
-{
+.img-restaurante-opcao {
+  height: 130px;
+}
+
+.inputError {
  border: 2px solid #ff2828;
 }
 
@@ -301,13 +302,6 @@ td {
   display: inline-block;
 }
 
-.inline-form-groups {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;
-    padding: 4px 4px;
-}
-
 .form-groups > .form-controls {
   margin-top: 8px;
   width: -webkit-fill-available;
@@ -315,8 +309,15 @@ td {
   font-size: 16px;
 }
 
+.inline-form-groups {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 4px 4px;
+}
+
 .inline-form-groups > .form-controls {
-    width: -webkit-fill-available;
+    width: 330px;
     padding: 6px;
     font-size: 16px;
 }
@@ -330,6 +331,11 @@ td {
     color: #ffffff;
     padding: 10px;
     margin-top: 8px;
+}
+
+.input-selecionado {
+  background-color: #69c5ee;
+  border-color: #1e9bde;
 }
 
 .w-100 {

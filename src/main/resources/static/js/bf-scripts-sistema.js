@@ -62,3 +62,20 @@ function isNumberKey(evt) {
 
     return (isCharCodeNumeric === true || isCharCodeControl === true);
 }
+
+function buscaRestaurante(categoriaId) {
+	var tipoDeBuscaInput = document.getElementById("tipo-de-busca");
+	var textoBuscaInput = document.getElementById("texto-busca");
+	var categoriaIdInput = document.getElementById("categoria-id");
+
+	if (categoriaId == null) {
+		tipoDeBuscaInput.value = "TEXTO";
+        categoriaIdInput.value = null;
+	} else {
+		tipoDeBuscaInput.value = "CATEGORIA";
+		textoBuscaInput.value = null;
+		document.getElementById("categoria-id").value = categoriaId;
+	}
+
+	document.getElementById("form-busca-restaurante").submit();
+}

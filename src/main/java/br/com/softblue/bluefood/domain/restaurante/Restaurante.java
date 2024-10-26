@@ -4,6 +4,7 @@ import br.com.softblue.bluefood.domain.usuario.Usuario;
 import br.com.softblue.bluefood.infrastructure.web.validator.LogotipoRestauranteUploadConstraint;
 import br.com.softblue.bluefood.util.FileType;
 import br.com.softblue.bluefood.util.PasswordUtil;
+import br.com.softblue.bluefood.util.StringUtil;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -44,7 +46,7 @@ public class Restaurante extends Usuario implements Serializable {
     @Max(120)
     private Integer tempoDeEntrega;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "restaurante_categoria_restaurante",
             joinColumns = @JoinColumn(name = "restaurante_id"),
@@ -70,6 +72,16 @@ public class Restaurante extends Usuario implements Serializable {
     public void encryptPassword() {
         String senhaCriptografada = PasswordUtil.encrypt(this.getSenha());
         this.setSenha(senhaCriptografada);
+    }
+
+    public String getCategoriasAsText() {
+        Set<String> categorias = new LinkedHashSet<>(0);
+
+        for (CategoriaRestaurante categoria: this.categorias) {
+            categorias.add(categoria.getNome());
+        }
+
+        return StringUtil.concatenate(categorias);
     }
 
 }
