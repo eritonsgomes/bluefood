@@ -5,11 +5,14 @@ import br.com.softblue.bluefood.domain.cliente.Cliente;
 import br.com.softblue.bluefood.domain.cliente.ClienteRepository;
 import br.com.softblue.bluefood.domain.restaurante.FiltroDeBusca;
 import br.com.softblue.bluefood.domain.restaurante.Restaurante;
+import br.com.softblue.bluefood.domain.restaurante.RestauranteComparator;
 import br.com.softblue.bluefood.domain.restaurante.RestauranteRepository;
+import br.com.softblue.bluefood.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,7 +66,7 @@ public class RestauranteService {
     }
 
     public List<Restaurante> searchByFilter(FiltroDeBusca filtroDeBusca) {
-        List<Restaurante> restaurantes = null;
+        List<Restaurante> restaurantes;
 
         switch (filtroDeBusca.getTipoDeBusca()) {
             case TEXTO -> {
@@ -75,6 +78,22 @@ public class RestauranteService {
             default -> throw new IllegalArgumentException("O Tipo de Busca " + filtroDeBusca.getTipoDeBusca()
                     + "não é suportado");
         }
+
+        Iterator<Restaurante> it = restaurantes.iterator();
+
+        while (it.hasNext()) {
+            Restaurante restaurante = it.next();
+            double taxaEntrega = restaurante.getTaxaDeEntregaBase().doubleValue();
+
+            if (filtroDeBusca.isEntregaGratis() && taxaEntrega > 0
+                    || !filtroDeBusca.isEntregaGratis() && taxaEntrega == 0) {
+                it.remove();
+            }
+        }
+
+        RestauranteComparator comparator = new RestauranteComparator(filtroDeBusca,
+                SecurityUtil.getLoggedCliente().getCep());
+        restaurantes.sort(comparator);
 
         return restaurantes;
     }

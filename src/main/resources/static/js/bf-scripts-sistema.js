@@ -79,3 +79,8 @@ function buscaRestaurante(categoriaId) {
 
 	document.getElementById("form-busca-restaurante").submit();
 }
+
+function setComandoDoFiltro(cmd) {
+    document.getElementById("cmd").value = cmd;
+    document.getElementById("form-busca-restaurante").submit();
+}

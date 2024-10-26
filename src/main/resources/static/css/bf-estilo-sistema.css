@@ -334,8 +334,8 @@ td {
 }
 
 .input-selecionado {
-  background-color: #69c5ee;
-  border-color: #1e9bde;
+  background-color: #69c5ee !important;
+  border-color: #1e9bde !important;
 }
 
 .w-100 {

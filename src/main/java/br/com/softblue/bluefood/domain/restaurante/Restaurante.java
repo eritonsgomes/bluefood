@@ -84,4 +84,19 @@ public class Restaurante extends Usuario implements Serializable {
         return StringUtil.concatenate(categorias);
     }
 
+    public Integer calcularTempoDeEntrega(String cep) {
+        int soma = 0;
+
+        for (char c : cep.toCharArray()) {
+            int v = Character.getNumericValue(c);
+            if (v > 0) {
+                soma += v;
+            }
+        }
+
+        soma /= 2;
+
+        return tempoDeEntrega + soma;
+    }
+
 }

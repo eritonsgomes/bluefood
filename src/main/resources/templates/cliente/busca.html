@@ -38,24 +38,29 @@
                             </a>
                         </div>
                     </div>
+
+                    <div class="filtro-pesquisa-geral-cols1">
+                        <input type="button" value="Entrega grátis" onclick="setComandoDoFiltro('ENTREGA_GRATIS')"
+                               th:classappend="*{entregaGratis} ? 'input-selecionado' : ''">
+                    </div>
+
+                    <div class="filtro-pesquisa-geral-cols2">
+                        <input type="button" value="Menor Taxa" onclick="setComandoDoFiltro('MENOR_TAXA')"
+                               th:classappend="*{tipoDeOrdenacao.name()} == 'TAXA' and *{asc} ? 'input-selecionado' : ''" />
+                        <input type="button" value="Maior Taxa" onclick="setComandoDoFiltro('MAIOR_TAXA')"
+                               th:classappend="*{tipoDeOrdenacao.name()} == 'TAXA' and !*{asc} ? 'input-selecionado' : ''" />
+
+                        <input type="button" value="Menor Tempo" onclick="setComandoDoFiltro('MENOR_TEMPO')"
+                               th:classappend="*{tipoDeOrdenacao.name()} == 'TEMPO' and *{asc} ? 'input-selecionado' : ''" />
+                        <input type="button" value="Maior Tempo" onclick="setComandoDoFiltro('MAIOR_TEMPO')"
+                               th:classappend="*{tipoDeOrdenacao.name()} == 'TEMPO' and !*{asc} ? 'input-selecionado' : ''" />
+
+                        <input type="hidden" id="entrega-gratis" th:field="*{entregaGratis}" />
+                        <input type="hidden" id="tipo-de-ordenacao" th:field="*{tipoDeOrdenacao}" />
+                        <input type="hidden" id="asc" th:field="*{asc}" />
+                        <input type="hidden" id="cmd" name="cmd" />
+                    </div>
                 </form>
-            </div>
-        </div>
-
-        <div>
-            <div class="filtro-pesquisa-geral-cols1">
-                <input type="button" value="Entrega grátis" class="input-selecionado">
-            </div>
-
-            <div class="filtro-pesquisa-geral-cols2">
-                <input type="button" value="Menor preço">
-                <input type="button" value="Maior preço">
-
-                <input type="button" value="Menor taxa">
-                <input type="button" value="Maior taxa">
-
-                <input type="button" value="Menor tempo">
-                <input type="button" value="Maior tempo">
             </div>
         </div>
 
