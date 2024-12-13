@@ -1,0 +1,51 @@
+#server.servlet.context-path=/bluefood
+
+spring:
+  application:
+    name:
+      bluefood
+
+  datasource:
+    url:
+      jdbc:mysql://localhost:3306/bluefood?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=America/Sao_Paulo
+    username:
+      bluefood
+    password:
+      nhac
+
+  data:
+    jdbc:
+      dialect:
+        MySQLDialect
+
+  jpa:
+    generate-ddl:
+      true
+    open-in-view:
+      false
+    hibernate:
+      ddl-auto:
+        create-drop
+    show-sql:
+      false
+
+  sql:
+    init:
+      encoding:
+        UTF-8
+
+  servlet:
+    multipart:
+      max-file-size:
+        512KB
+      max-request-size:
+        512KB
+
+bluefood:
+  files:
+    logotipos:
+      C:\\blueFood\\logotipos
+    comidas:
+      C:\\blueFood\\comidas
+    categorias:
+      C:\\blueFood\\categorias
